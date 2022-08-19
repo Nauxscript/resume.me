@@ -1,4 +1,18 @@
 import { defineConfig } from 'astro/config';
+import uno from 'astro-uno'
+// import {  } from 'unocss'
+import presetWind from '@unocss/preset-wind'
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  integrations: [
+    uno({
+      presets: [presetWind()],
+      shortcuts: [
+        {
+          'resume-content': 'w-1024px min-h-1440px',
+        },
+      ]
+    })
+  ]
+});
