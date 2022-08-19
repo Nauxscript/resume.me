@@ -1,0 +1,235 @@
+---
+export interface Link {
+  text: string;
+  preText: string;
+  value: string;
+}
+
+export interface BaseInfo {
+  name: string;
+  name_en: string;
+  post: string;
+  base: string;
+  gender: string;
+  birth: string;
+  university: string;
+  major: string;
+  education: string;
+  graduation: string;
+  gitee: Link;
+  tel: Link;
+  github: Link;
+  blog: Link;
+  mail: Link;
+}
+
+export interface Props {
+  baseInfo: BaseInfo;
+}
+
+const props = Astro.props as Props
+---
+
+<header class="resume-header bg-blue-400 min-h-64 w-full px-10 py-8 text-white">
+  <div
+    class="w-full resume-header-main py-2 flex flex-col sm:flex-row sm:justify-between sm:items-center print:flex-row print:justify-between print:items-center border-b-2 border-blue-200 border-opacity-75"
+  >
+    <div
+      class="w-full sm:w-1/2 print:w-1/2 flex flex-col sm:flex-row print:flex-row"
+    >
+      <h1 class="me-name text-4xl flex">{props.baseInfo.name}</h1>
+      <h1 class="me-name text-4xl flex items-center">
+        <small class="hidden print:flex sm:flex"
+          ><small>&nbsp;/&nbsp;</small>
+        </small><small><small>{props.baseInfo.name_en}</small></small>
+      </h1>
+    </div>
+    <h3 class="me-title text-2xl">
+      {props.baseInfo.post}
+      <small
+        ><small>
+          / <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 inline-block print:inline-block"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>{props.baseInfo.base}
+        </small>
+      </small>
+    </h3>
+  </div>
+  <div
+    class="resume-header-ohter flex flex-col sm:flex-row print:flex-row py-4 flex-1"
+  >
+    <ul
+      class="me-info sm:w-1/2 sm:h-full print:w-1/2 print:h-full flex flex-col justify-start sm:items-start print:items-start mb-2 sm:mb-0 print:mb-0"
+    >
+      <li>{props.baseInfo.gender} / {props.baseInfo.birth}</li>
+      <li>{props.baseInfo.university}</li>
+      <li>{props.baseInfo.major}</li>
+      <li>{props.baseInfo.education} / {props.baseInfo.graduation}</li>
+    </ul>
+    <ul
+      class="me-link sm:w-1/2 sm:h-full print:w-1/2 print:h-full flex flex-col justify-start sm:items-end print:items-end"
+    >
+      <li
+        class="flex cursor-pointer linkto items-center group transition-colors hover:text-blue-200 { props.baseInfo.blog.value ? '' : 'hidden' }"
+      >
+        <a
+          class="mr-2 print:hidden"
+          href="{ props.baseInfo.blog.value ? props.baseInfo.blog.value : '' }"
+          target="_blank"
+          >{props.baseInfo.blog.preText + props.baseInfo.blog.text}
+        </a>
+        <a
+          class="mr-2 hidden print:flex"
+          href="{ props.baseInfo.blog.value ? props.baseInfo.blog.value : '' }"
+          target="_blank"
+          >{props.baseInfo.blog.preText + props.baseInfo.blog.value}
+        </a>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 group-hover:text-blue-200"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+          ></path>
+        </svg>
+      </li>
+      <li
+        class="flex cursor-pointer linkto items-center group transition-colors hover:text-blue-200 { props.baseInfo.github.value ? '' : 'hidden' }"
+      >
+        <a
+          class="mr-2 print:hidden"
+          href="{ props.baseInfo.github.value ? props.baseInfo.github.value : '' }"
+          target="_blank"
+          >{props.baseInfo.github.preText + props.baseInfo.github.text}
+        </a>
+        <a
+          class="mr-2 hidden print:flex"
+          href="{ props.baseInfo.github.value ? props.baseInfo.github.value : '' }"
+          target="_blank"
+          >{props.baseInfo.github.preText + props.baseInfo.github.value}
+        </a>
+        <svg
+          class="h-4 w-4 group-hover:text-blue-200"
+          viewBox="0 0 1024 1024"
+          fill="currentColor"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="2736"
+        >
+          <path
+            d="M279.04 714.24a42.666667 42.666667 0 1 1 53.461333-66.474667l90.453334 72.789334a42.666667 42.666667 0 0 1 13.994666 45.952c-11.648 37.205333-20.266667 65.066667-25.856 83.541333l-5.973333 20.181333c-3.669333 21.162667-18.773333 38.144-42.709333 38.144a994.133333 994.133333 0 0 1-15.786667-5.461333C189.226667 838.698667 85.333333 684.885333 85.333333 511.957333 85.333333 276.352 276.352 85.333333 512 85.333333s426.666667 191.018667 426.666667 426.666667a426.666667 426.666667 0 0 1-260.437334 392.96c-5.802667 2.304-11.349333 3.413333-16.64 3.413333-23.978667 0-39.04-16.981333-42.112-35.882666a3806.933333 3806.933333 0 0 0-16.213333-53.930667 30942.72 30942.72 0 0 0-56.149333-179.029333 42.666667 42.666667 0 0 1 21.376-50.901334c50.346667-25.514667 71.509333-51.072 71.509333-76.672 0-13.909333-5.333333-27.648-15.872-40.362666a42.666667 42.666667 0 0 1-8.618667-37.632l0.768-3.072-5.546666 3.328a42.666667 42.666667 0 0 1-37.034667 3.328A174.805333 174.805333 0 0 0 512 426.624c-21.930667 0-42.922667 3.84-61.696 10.922667a42.666667 42.666667 0 0 1-37.034667-3.328l-5.546666-3.328 0.768 3.072a42.666667 42.666667 0 0 1-8.618667 37.632c-10.538667 12.714667-15.872 26.453333-15.872 40.362666 0 25.6 21.12 51.157333 71.509333 76.672a42.666667 42.666667 0 1 1-38.570666 76.117334C340.778667 626.176 298.666667 575.274667 298.666667 512c0-27.178667 7.808-53.205333 22.229333-76.458667L299.946667 351.658667c-9.216-36.864 30.72-66.474667 63.317333-46.933334l77.226667 46.293334A264.277333 264.277333 0 0 1 512 341.333333c24.661333 0 48.768 3.285333 71.552 9.685334l77.184-46.293334c32.554667-19.541333 72.533333 10.069333 63.317333 46.933334l-20.949333 83.882666A144.213333 144.213333 0 0 1 725.333333 511.957333c0 53.845333-30.506667 98.730667-86.485333 134.698667a26941.482667 26941.482667 0 0 1 49.322667 157.738667A341.333333 341.333333 0 0 0 512 170.666667a341.333333 341.333333 0 0 0-176.128 633.728l11.008-35.584-67.84-54.613334z"
+            p-id="2737"></path>
+        </svg>
+      </li>
+      <li
+        class="flex cursor-pointer linkto items-center group transition-colors hover:text-blue-200 { props.baseInfo.gitee.value ? '' : 'hidden' }"
+      >
+        <a
+          class="mr-2 print:hidden"
+          href="{ props.baseInfo.gitee.value ? props.baseInfo.gitee.value : '' }"
+          target="_blank"
+          >{props.baseInfo.gitee.preText + props.baseInfo.gitee.text}
+        </a>
+        <a
+          class="mr-2 hidden print:flex"
+          href="{ props.baseInfo.gitee.value ? props.baseInfo.gitee.value : '' }"
+          target="_blank"
+          >{props.baseInfo.gitee.preText + props.baseInfo.gitee.value}
+        </a>
+        <svg
+          class="h-4 w-4 group-hover:text-blue-200"
+          viewBox="0 0 1024 1024"
+          fill="currentColor"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="3072"
+        >
+          <path
+            d="M512 0c282.752 0 512 229.248 512 512s-229.248 512-512 512S0 794.752 0 512 229.248 0 512 0z m0 77.568C272.042667 77.568 77.568 272.042667 77.568 512c0 239.957333 194.474667 434.432 434.432 434.432 239.957333 0 434.432-194.474667 434.432-434.432 0-239.957333-194.474667-434.432-434.432-434.432z"
+            p-id="3073"></path>
+          <path
+            d="M725.802667 465.066667H485.973333a20.906667 20.906667 0 0 0-20.906666 20.906666v52.096c0 11.52 9.386667 20.906667 20.906666 20.906667h146.005334c11.52 0 20.864 9.301333 20.864 20.821333v10.410667c0 34.56-28.032 62.592-62.592 62.592H392.106667a20.864 20.864 0 0 1-20.906667-20.864v-198.144A62.592 62.592 0 0 1 433.792 371.2h292.010667a20.906667 20.906667 0 0 0 20.864-20.864V298.24a20.821333 20.821333 0 0 0-20.821334-20.864h-292.010666A156.458667 156.458667 0 0 0 277.333333 433.792v292.010667c0 11.52 9.344 20.864 20.864 20.864H605.866667a140.8 140.8 0 0 0 140.8-140.8v-119.893334a20.864 20.864 0 0 0-20.864-20.906666z"
+            p-id="3074"></path>
+        </svg>
+      </li>
+      <li
+        class="flex cursor-pointer linkto items-center group transition-colors hover:text-blue-200 { props.baseInfo.mail.value ? '' : 'hidden' }"
+      >
+        <a
+          class="mr-2 print:hidden"
+          href="{ props.baseInfo.mail ? 'mailto: ' + props.baseInfo.mail.value : '' }"
+          >{props.baseInfo.mail.preText + props.baseInfo.mail.text}
+        </a>
+        <a
+          class="mr-2 hidden print:flex"
+          href="{ props.baseInfo.mail ? 'mailto: ' + props.baseInfo.mail.value : '' }"
+          >{props.baseInfo.mail.preText + props.baseInfo.mail.value}
+        </a>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 group-hover:text-blue-200"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+          ></path>
+        </svg>
+      </li>
+      <li
+        class="flex cursor-pointer linkto items-center group transition-colors hover:text-blue-200 { props.baseInfo.tel.value ? '' : 'hidden' } }"
+      >
+        <a
+          class="mr-2 print:hidden"
+          href="{ props.baseInfo.tel ? 'tel: ' + props.baseInfo.tel.value : '' }"
+          >{props.baseInfo.tel.preText + props.baseInfo.tel.text}
+        </a>
+        <a
+          class="mr-2 hidden print:flex"
+          href="{ props.baseInfo.tel ? 'tel: ' + props.baseInfo.tel.value : '' }"
+          >{props.baseInfo.tel.preText + props.baseInfo.tel.value}
+        </a>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 group-hover:text-blue-200"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+          ></path>
+        </svg>
+      </li>
+    </ul>
+  </div>
+</header>

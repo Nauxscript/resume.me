@@ -1,11 +1,58 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+
+const headerInfo = {
+	name: "汤卓轩",
+	name_en: "Zhuoxuan Tang",
+	post: "前端开发工程师",
+	base: "广州",
+	gender: "男",
+	birth: "1996.04",
+	university: "广东医科大学",
+	major: "信息管理与信息系统",
+	education: "本科",
+	graduation: "毕业于 2018",
+	blog: {
+		text: "Nauxscript",
+		preText: "Blog · ",
+		value: "https://Nauxscript.gitee.io",
+	},
+	gitee: {
+		text: "Nauxscript",
+		preText: "Gitee · ",
+		value: "https://gitee.com/Nauxscript",
+	},
+	github: {
+		text: "Nauxscript",
+		preText: "Github · ",
+		value: "",
+	},
+	mail: {
+		text: "nauxscript@gmail.com",
+		preText: "",
+		value: "nauxscript@gmail.com",
+	},
+	tel: {
+		text: "153****1980 (8am - 8pm)",
+		preText: "",
+		value: "15384451980 (8am - 8pm)",
+	},
+};
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
+<Layout title="Rusume">
+	<main
+		class="resume-main h-full w-full flex justify-center items-start sm:py-12 bg-gray-100 bg-backgrondimg dark:bg-gray-600 dark:bg-dark-backgrondimg relative"
+	>
+		<!-- <h2 class="text-red">Astro project base in Unocss</h2> -->
+		<div
+			id="print-content"
+			class="resume-content flex flex-col justify-start items-center rounded-md overflow-hidden shadow-md"
+		>
+			<Header baseInfo={headerInfo}></Header>
+		</div>
+		<!-- <h1>Welcome to <span class="text-gradient">Astro</span></h1>
 		<p class="instructions">
 			Check out the <code>src/pages</code> directory to get started.<br />
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
@@ -31,7 +78,7 @@ import Card from '../components/Card.astro';
 				title="Chat"
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
-		</ul>
+		</ul> -->
 	</main>
 </Layout>
 
@@ -44,11 +91,11 @@ import Card from '../components/Card.astro';
 		margin: 2rem 0;
 	}
 
-	main {
+	/* main {
 		margin: auto;
 		padding: 1em;
 		max-width: 60ch;
-	}
+	} */
 
 	.text-gradient {
 		font-weight: 900;

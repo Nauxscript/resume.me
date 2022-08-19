@@ -1,0 +1,1 @@
+一个基于 **VanillaJS**、**TailwindCSS** 构建的个人在线简历项目，使用 **webpack** 进行打包，通过 **PostCSS** 增强 **TailwindCSS** 样式粒度及 **Tree Shaking**，使用其下一代引入的 _Just-in-Time Mode_，提高开发、打包速度以及指令变体支持。同时，根据项目需求完善了页面打印、深色模式等功能；当前简历即为该项目生成。
