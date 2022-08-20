@@ -30,7 +30,7 @@ export interface Props {
 const props = Astro.props as Props
 ---
 
-<header class="resume-header bg-blue-400 min-h-64 w-full px-10 py-8 text-white">
+<header class="resume-header bg-blue-400 w-full px-10 py-8 text-white">
   <div
     class="w-full resume-header-main py-2 flex flex-col sm:flex-row sm:justify-between sm:items-center print:flex-row print:justify-between print:items-center border-b-2 border-blue-200 border-opacity-75"
   >
@@ -143,7 +143,7 @@ const props = Astro.props as Props
             p-id="2737"></path>
         </svg>
       </li>
-      <li
+      <!-- <li
         class="flex cursor-pointer linkto items-center group transition-colors hover:text-blue-200 { props.baseInfo.gitee.value ? '' : 'hidden' }"
       >
         <a
@@ -173,7 +173,7 @@ const props = Astro.props as Props
             d="M725.802667 465.066667H485.973333a20.906667 20.906667 0 0 0-20.906666 20.906666v52.096c0 11.52 9.386667 20.906667 20.906666 20.906667h146.005334c11.52 0 20.864 9.301333 20.864 20.821333v10.410667c0 34.56-28.032 62.592-62.592 62.592H392.106667a20.864 20.864 0 0 1-20.906667-20.864v-198.144A62.592 62.592 0 0 1 433.792 371.2h292.010667a20.906667 20.906667 0 0 0 20.864-20.864V298.24a20.821333 20.821333 0 0 0-20.821334-20.864h-292.010666A156.458667 156.458667 0 0 0 277.333333 433.792v292.010667c0 11.52 9.344 20.864 20.864 20.864H605.866667a140.8 140.8 0 0 0 140.8-140.8v-119.893334a20.864 20.864 0 0 0-20.864-20.906666z"
             p-id="3074"></path>
         </svg>
-      </li>
+      </li> -->
       <li
         class="flex cursor-pointer linkto items-center group transition-colors hover:text-blue-200 { props.baseInfo.mail.value ? '' : 'hidden' }"
       >

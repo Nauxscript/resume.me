@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import WorkingExp from "../components/WorkingExp.astro";
 
 const headerInfo = {
 	name: "汤卓轩",
@@ -39,6 +40,10 @@ const headerInfo = {
 		value: "15384451980 (8am - 8pm)",
 	},
 };
+
+const workingExp = {
+
+}
 ---
 
 <Layout title="Rusume">
@@ -51,6 +56,17 @@ const headerInfo = {
 			class="resume-content flex flex-col justify-start items-center rounded-md overflow-hidden shadow-md"
 		>
 			<Header baseInfo={headerInfo}></Header>
+			<div class="resume-body dark:bg-gray-700 bg-white flex flex-col sm:flex-row print:flex-row flex-1 w-full px-8">
+				<div class="section-col flex flex-col items-start w-full print:block sm:w-1/2 print:w-1/2">
+					<WorkingExp></WorkingExp>
+					<!-- <%- require('./layouts/workingExp.ejs')({workings}) %> -->
+					<!-- <%- require('./layouts/internshipExp.ejs')({internship}) %> -->
+				</div>
+				<div class="section-col flex flex-col items-start w-full sm:w-1/2 print:w-1/2">
+					<!-- <%- require('./layouts/skills.ejs')({skills}) %> -->
+					<!-- <%- require('./layouts/selfProjects.ejs')({selfProjects}) %> -->
+				</div>
+			</div>
 		</div>
 		<!-- <h1>Welcome to <span class="text-gradient">Astro</span></h1>
 		<p class="instructions">

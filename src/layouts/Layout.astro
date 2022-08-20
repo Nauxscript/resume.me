@@ -4,8 +4,10 @@ export interface Props {
 }
 
 const { title } = Astro.props as Props;
+import '@unocss/reset/tailwind.css'
 ---
 
+<!-- @unocss-include -->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -15,12 +17,12 @@ const { title } = Astro.props as Props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="p-0 m-0">
 		<slot />
 	</body>
 </html>
 <style>
-	:root {
+	/* :root {
 		--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
 		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
 		--font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
@@ -52,5 +54,5 @@ const { title } = Astro.props as Props;
 	:global(code) {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+	} */
 </style>

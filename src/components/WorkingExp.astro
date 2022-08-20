@@ -1,0 +1,43 @@
+---
+import Company from './Company.astro';
+const ProjPacs = await Astro.glob('./projects/ProjPacs.md')
+const ProjMiniPg = await Astro.glob('./projects/ProjMiniPg.md')
+const ProjDicomView = await Astro.glob('./projects/ProjDicomView.md')
+
+
+const workingExpData = [{
+  name: "广州放射云信息科技有限公司",
+  time: "2018.04 - 至今",
+  type: "工作",
+  link: 'https://www.fangsheyun.com',
+  projects: [{
+    name: "全院PACS（医学影像系统）",
+    time: "2018.07 - 至今",
+    desc: ProjPacs,
+  }, {
+    name: "约检查小程序项目",
+    imgLink: './asset/img/mini_program.jpg',
+    link: '',
+    type: 'link',
+    time: "2019.05 - 2019.11",
+    desc: ProjMiniPg 
+  }, {
+    name: "网页影像浏览器（Dicom Viewer）",
+    time: "2018.12 - 2020.05",
+    desc: ProjDicomView 
+  }]
+}]
+
+const items = ["Dog", "Cat", "Platypus"];
+
+console.log(workingExpData)
+
+---
+<section class="module flex flex-col flex-shrink-0 items-center w-full pt-4 print:pt-4 px-4 text-gray-600">
+  <h5 class="module-header w-full flex items-center py-2 before:border-b-2 before:border-gray-100 before:flex-1 before:mr-4 after:border-b-2 after:border-gray-100 after:flex-1 after:ml-4">
+    <span class="text-base bg-gray-200 rounded-full px-2 text-center">工作经验</span>
+  </h5>
+  <div class="module-body w-full">
+    {workingExpData.map(item => (<Company companyInfo={item}></Company>))}
+  </div>
+</section>
