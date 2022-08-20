@@ -12,7 +12,7 @@ export default defineConfig({
         {
           'resume-content': 'w-1024px min-h-1440px',
         },
-      ]
+      ],
     })
   ]
 });
