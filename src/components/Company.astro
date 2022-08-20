@@ -1,10 +1,12 @@
 ---
 import type { MarkdownInstance } from "astro";
+import Project from './Project.astro';
 
 export interface ProjectInfo {
   name: string;
   time: string;
   link?: string;
+  imgLink?: string; 
   type?: string;
   desc: MarkdownInstance<Record<string, any>>[];
 }
@@ -33,10 +35,16 @@ console.log(props)
   </div>
 </div>
 {
+  props.companyInfo.projects.map(item => (
+    <Project projectInfo={item}></Project>
+  ))
+}
+<!-- {
   props.companyInfo.projects.map(project => {
     const Content = project.desc[0].Content
+
     return <Content></Content>
   })
-}
+} -->
 
 
