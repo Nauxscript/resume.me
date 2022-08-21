@@ -1,7 +1,6 @@
 ---
 import type { MarkdownInstance } from "astro";
 import Project from './Project.astro';
-
 export interface ProjectInfo {
   name: string;
   time: string;
@@ -11,16 +10,28 @@ export interface ProjectInfo {
   desc: MarkdownInstance<Record<string, any>>[];
 }
 
-export interface CompanyInfo {
+export type PartialSome<T extends Object, K extends keyof T> = {
+  [KK in keyof T]: KK extends K ? never : T[KK];
+} & {
+  [KKK in K]?: KKK extends keyof T ? T[KKK] : never
+} 
+
+export type InternshipInfo = PartialSome<ProjectInfo, 'desc'>
+
+export interface CompanyInfo<T> {
   name: string;
   time: string;
   type: string;
   link: string; 
-  projects: Array<ProjectInfo>;
+  projects: Array<T>;
 }
 
+export type WorkingExpData = CompanyInfo<ProjectInfo>
+
+export type InternshipExpData = CompanyInfo<InternshipInfo>
+
 export interface Props {
-  companyInfo: CompanyInfo
+  companyInfo: WorkingExpData
 }
 
 const props = Astro.props as Props
@@ -38,12 +49,3 @@ const props = Astro.props as Props
     <Project projectInfo={item}></Project>
   ))
 }
-<!-- {
-  props.companyInfo.projects.map(project => {
-    const Content = project.desc[0].Content
-
-    return <Content></Content>
-  })
-} -->
-
-

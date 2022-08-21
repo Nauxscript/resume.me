@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import WorkingExp from "../components/WorkingExp.astro";
+import InternshipExp from "../components/InternshipExp.astro";
 import '../styles/global.css';
 
 const headerInfo = {
@@ -57,7 +58,7 @@ const headerInfo = {
 			<div class="resume-body dark:bg-gray-700 bg-white flex flex-col sm:flex-row print:flex-row flex-1 w-full px-8">
 				<div class="section-col flex flex-col items-start w-full print:block sm:w-1/2 print:w-1/2">
 					<WorkingExp></WorkingExp>
-					<!-- <%- require('./layouts/internshipExp.ejs')({internship}) %> -->
+					<InternshipExp></InternshipExp>
 				</div>
 				<div class="section-col flex flex-col items-start w-full sm:w-1/2 print:w-1/2">
 					<!-- <%- require('./layouts/skills.ejs')({skills}) %> -->

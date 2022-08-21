@@ -1,0 +1,25 @@
+---
+import Company from './Company.astro';
+import type { InternshipExpData } from './Company.astro';
+
+const internshipExpData = [{
+  name: "广州创惠信息科技有限公司",
+  time: "2017.11 - 2018.04",
+  type: "实习",
+  link: 'https://www.fangsheyun.com',
+  projects: [{
+    name: "LIS（实验室信息管理系统）",
+    time: "实施工程师",
+  }]
+}] as InternshipExpData[]
+---
+<section class="module flex flex-col flex-shrink-0 items-center w-full pt-4 print:pt-4 px-4 text-gray-600 page-break">
+  <h5 class="module-header w-full flex items-center py-2 after:content-empty before:content-empty before:border-b-2 before:border-gray-100 before:flex-1 before:mr-4 after:border-b-2 after:border-gray-100 after:flex-1 after:ml-4">
+    <span class="text-base bg-gray-200 rounded-full px-2 text-center">实习经历</span>
+  </h5>
+  <div class="module-body w-full">
+    <!-- <% internship.forEach(company => { %> 
+      <%- require('./components/company.ejs')({company}) %>
+    <% }) %> -->
+  </div>
+</section>
