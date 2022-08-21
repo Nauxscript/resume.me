@@ -1,8 +1,10 @@
 ---
 import Company from './Company.astro';
+import imgMiniProgram from '../images/mini_program.jpg';
 const ProjPacs = await Astro.glob('./projects/ProjPacs.md')
 const ProjMiniPg = await Astro.glob('./projects/ProjMiniPg.md')
 const ProjDicomView = await Astro.glob('./projects/ProjDicomView.md')
+
 
 const workingExpData = [{
   name: "广州放射云信息科技有限公司",
@@ -15,7 +17,7 @@ const workingExpData = [{
     desc: ProjPacs,
   }, {
     name: "约检查小程序项目",
-    imgLink: './asset/img/mini_program.jpg',
+    imgLink: imgMiniProgram,
     type: 'link',
     time: "2019.05 - 2019.11",
     desc: ProjMiniPg 
