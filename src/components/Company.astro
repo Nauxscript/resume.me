@@ -1,5 +1,6 @@
 ---
 import type { MarkdownInstance } from "astro";
+import type { PartialSome } from "../types";
 import Project from './Project.astro';
 export interface ProjectInfo {
   name: string;
@@ -9,12 +10,6 @@ export interface ProjectInfo {
   type?: string;
   desc: MarkdownInstance<Record<string, any>>[];
 }
-
-export type PartialSome<T extends Object, K extends keyof T> = {
-  [KK in keyof T]: KK extends K ? never : T[KK];
-} & {
-  [KKK in K]?: KKK extends keyof T ? T[KKK] : never
-} 
 
 export type InternshipInfo = PartialSome<ProjectInfo, 'desc'>
 

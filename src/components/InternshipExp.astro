@@ -18,8 +18,8 @@ const internshipExpData = [{
     <span class="text-base bg-gray-200 rounded-full px-2 text-center">实习经历</span>
   </h5>
   <div class="module-body w-full">
-    <!-- <% internship.forEach(company => { %> 
-      <%- require('./components/company.ejs')({company}) %>
-    <% }) %> -->
+    {
+      internshipExpData.map(item => (<Company companyInfo={item}></Company>))
+    }
   </div>
 </section>
