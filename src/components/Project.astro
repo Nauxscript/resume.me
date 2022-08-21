@@ -17,13 +17,8 @@ const showLink = !!projectInfo.imgLink || !!projectInfo.link
     {
       showLink && (<a class="company-project-name relative font-bold text-blue-400 border-l-4 border-blue-400 pl-2 flex w-max hover:text-blue-600 dark:hover:text-blue-600 transition-all cursor-pointer group" href={ projectInfo.link ? projectInfo.link : '/'}>
         { projectInfo.name }
-        <!-- <img class="absolute hidden group-hover:block w-32 h-32 top-0 left-[calc(100%+.5rem)] border-2 rounded-md z-[5] border-blue-200" src={ projectInfo.imgLink }  alt="" /> -->
-        <!-- {
-          if (projectInfo.imgLink) {
-          }
-        } -->
         {
-          !!projectInfo.imgLink && <img class="absolute hidden group-hover:block w-32 h-32 top-0 left-[calc(100%+.5rem)] border-2 rounded-md z-[5] border-blue-200" src={ projectInfo.imgLink }  alt="" />
+          !!projectInfo.imgLink && (<img class="absolute hidden group-hover:block w-32 h-32 top-0 left-[calc(100%+.5rem)] border-2 rounded-md z-[5] border-blue-200" src={ projectInfo.imgLink }  alt="" />)
         }
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 print:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -36,8 +31,11 @@ const showLink = !!projectInfo.imgLink || !!projectInfo.link
     {
       Content && (<Content></Content>)
     }
+    {
+      !!projectInfo.link && (<a class="mb-2 text-blue-400 hover:text-blue-500 transition-all hidden print:flex" target="_blank" href={ projectInfo.link }>项目地址：{ projectInfo.link }</a>)
+    }
     <!-- {if (project.link) {  
-      <a class="mb-2 text-blue-400 hover:text-blue-500 transition-all hidden print:flex" target="_blank" href="{ project.link %>">项目地址：{ project.link %></a>
+      
     }}  -->
   </div>
 </div>

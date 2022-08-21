@@ -1,0 +1,23 @@
+---
+import type { MarkdownInstance } from "astro";
+
+export interface SkillInfo {
+  name: string;
+  desc: MarkdownInstance<Record<string, any>>[];
+}
+
+export interface Props {
+  skillInfo: SkillInfo
+}
+
+const { skillInfo } = Astro.props as Props
+const Content = skillInfo.desc[0].Content
+---
+<div class="skill-list-item flex flex-col">
+  <span class="skill-list-item-title leading-7 text-base text-blue-400 font-bold">{ skillInfo.name }</span>
+  <div class="skill-list-item-content ml-4">
+    <div class="leading-7 text-sm py-1 dark:text-gray-100">
+      <Content></Content>
+    </div>
+  </div>
+</div>

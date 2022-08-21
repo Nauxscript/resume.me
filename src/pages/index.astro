@@ -1,9 +1,11 @@
 ---
+import '../styles/global.css';
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import WorkingExp from "../components/WorkingExp.astro";
 import InternshipExp from "../components/InternshipExp.astro";
-import '../styles/global.css';
+import Skills from "../components/Skills.astro";
+import SelfProjects from "../components/SelfProjects.astro";
 
 const headerInfo = {
 	name: "汤卓轩",
@@ -61,6 +63,8 @@ const headerInfo = {
 					<InternshipExp></InternshipExp>
 				</div>
 				<div class="section-col flex flex-col items-start w-full sm:w-1/2 print:w-1/2">
+					<Skills></Skills>
+					<SelfProjects></SelfProjects>
 					<!-- <%- require('./layouts/skills.ejs')({skills}) %> -->
 					<!-- <%- require('./layouts/selfProjects.ejs')({selfProjects}) %> -->
 				</div>

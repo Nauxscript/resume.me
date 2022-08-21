@@ -1,0 +1,45 @@
+---
+import Skill from './Skill.astro';
+import type { SkillInfo } from './Skill.astro';
+
+const WebFramework = await Astro.glob('./skills/WebFramework.md')
+const UIFramework = await Astro.glob('./skills/UIFramework.md')
+const MiniPg = await Astro.glob('./skills/MiniPg.md')
+const PrecompileLang = await Astro.glob('./skills/PrecompileLang.md')
+const ToolLib = await Astro.glob('./skills/ToolLib.md')
+
+const skills = [{
+  name: '前端框架',
+  desc: WebFramework
+}, {
+  name: '前端样式库',
+  desc: UIFramework
+}, {
+  name: '小程序',
+  desc: MiniPg
+}, {
+  name: '预编译语言',
+  desc: PrecompileLang
+}, {
+  name: '前端工具库',
+  desc: ToolLib
+}] as Array<SkillInfo>
+---
+<section class="module flex flex-col flex-shrink-0 items-center w-full pt-4 print:pt-4 px-4 text-gray-600">
+  <h5 class="module-header w-full flex items-center py-2 after:content-empty before:content-empty before:border-b-2 before:border-gray-100 before:flex-1 before:mr-4 after:border-b-2 after:border-gray-100 after:flex-1 after:ml-4">
+    <span class="text-base bg-gray-200 rounded-full px-2 text-center">专业能力</span>
+  </h5>
+  <div class="module-body w-full">
+    <div class="skill-list mb-2">
+      <div class="skill-list-desc">
+        {
+          skills.map(item => (<Skill skillInfo={item}></Skill>))
+        }
+        
+        <!-- <% skills.forEach(skill => { %> 
+          <%- require('./components/skill.ejs')({skill}) %>
+        <% }) %> -->
+      </div>
+    </div>
+  </div>
+</section>

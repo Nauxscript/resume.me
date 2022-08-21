@@ -1,0 +1,41 @@
+---
+import Project from './Project.astro';
+
+const ProjArk = await Astro.glob('./projects/ProjArk.md')
+const ProjResume = await Astro.glob('./projects/ProjResume.md')
+
+const selfProjects = [{
+  name: "Noah-ark",
+  imgLink: '',
+  link: 'http://nauxscript.gitee.io/noahs-ark',
+  type: 'link',
+  time: "",
+  desc: ProjArk
+}, {
+  name: "Naux Resume",
+  imgLink: '',
+  link: 'https://gitee.com/Nauxscript/resume',
+  type: 'link',
+  time: "",
+  desc: ProjResume
+}] 
+---
+<section class="module flex flex-col flex-shrink-0 items-center w-full pt-4 print:pt-4 px-4 text-gray-600">
+  <h5 class="module-header w-full flex items-center py-2 after:content-empty before:content-empty before:border-b-2 before:border-gray-100 before:flex-1 before:mr-4 after:border-b-2 after:border-gray-100 after:flex-1 after:ml-4">
+    <span class="text-base bg-gray-200 rounded-full px-2 text-center">个人作品</span>
+  </h5>
+  <div class="module-body w-full">
+    <div class="skill-list mb-2">
+      <div class="skill-list-desc">
+        {
+          selfProjects.map(item => (
+            <Project projectInfo={item}></Project>
+          ))
+        }
+        <!-- <% selfProjects.forEach(project => { %>
+          <%- require('./components/project.ejs')({project}) %>
+        <% }) %> -->
+      </div>
+    </div>
+  </div>
+</section>
