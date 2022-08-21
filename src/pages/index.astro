@@ -6,6 +6,10 @@ import WorkingExp from "../components/WorkingExp.astro";
 import InternshipExp from "../components/InternshipExp.astro";
 import Skills from "../components/Skills.astro";
 import SelfProjects from "../components/SelfProjects.astro";
+import MobileControl from "../components/MobileControl.astro";
+import PcControl from "../components/PcControl.astro";
+
+// import '../utils/index';
 
 const headerInfo = {
 	name: "汤卓轩",
@@ -47,10 +51,79 @@ const headerInfo = {
 
 ---
 
+<script is:inline>
+console.log('init');
+// darkmode
+window.onload = () => {
+  console.log('ready');
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.querySelector('html').classList.add('dark');
+  } else {
+    document.querySelector('html').classList.remove('dark');
+  }
+
+	const darkModeBtn = document.getElementById('toggleDarkMode');
+	darkModeBtn && darkModeBtn.addEventListener('click', darkAndLight);
+
+	const switchBtn = document.getElementById('switch');
+	switchBtn && switchBtn.addEventListener('click', darkAndLight);
+
+	// print
+	const printBtn = document.getElementById('print');
+	printBtn && printBtn.addEventListener('click', printResume);
+
+	const pdfBtn = document.getElementById('pdfFile');
+	pdfBtn && pdfBtn.addEventListener('click', printResume);
+};
+
+function darkAndLight(e) {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.querySelector('html').classList.remove('dark');
+    localStorage.theme = 'light';
+  } else {
+    document.documentElement.classList.add('dark');
+    localStorage.theme = 'dark';
+  }
+}
+
+
+function printResume() {
+	console.log('print');
+	const timestamp = new Date().valueOf();
+  //判断iframe是否存在，不存在则创建iframe
+  let iframe = document.getElementById('print-iframe');
+  if (!iframe) {
+    let el = document.getElementById('print-content');
+    iframe = document.createElement('IFRAME');
+    let doc = null;
+    iframe.setAttribute('id', 'print-iframe');
+    document.body.appendChild(iframe);
+    doc = iframe.contentWindow.document;
+    iframe.style.display = 'none';
+    // 插入样式
+    if (!doc) return
+    doc.write('<style media="print">body {zoom: .8;}</style>');
+    doc.write('<link rel="stylesheet" href="./assets/index.css?t=' + timestamp + '">');
+    doc.write('<body>' + el.innerHTML + '</body>');
+    doc.close();
+    iframe.contentWindow.focus();
+  }
+  //解决第一次样式不生效的问题
+  setTimeout(function () {
+    iframe.contentWindow.print();
+  }, 50);
+  // 兼容IE浏览器，我就不兼容，IE 人人喊打
+  // if (navigator.userAgent.indexOf("MSIE") > 0){
+  //   document.body.removeChild(iframe);
+  // }
+}
+</script>
+
 <Layout title="Rusume">
 	<main
 		class="resume-main h-full w-full flex justify-center items-start sm:py-12 bg-gray-100 bg-backgrondimg dark:bg-gray-600 dark:bg-dark-backgrondimg relative"
 	>
+		<MobileControl></MobileControl>
 		<div
 			id="print-content"
 			class="resume-content flex flex-col justify-start items-center rounded-md overflow-hidden shadow-md"
@@ -67,5 +140,6 @@ const headerInfo = {
 				</div>
 			</div>
 		</div>
+		<PcControl></PcControl>
 	</main>
 </Layout>
