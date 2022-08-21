@@ -2,12 +2,14 @@ lockfileVersion: 5.4
 
 specifiers:
   '@unocss/preset-wind': ^0.45.8
+  '@unocss/transformer-directives': ^0.45.8
   astro: ^1.0.6
   astro-uno: ^0.1.6
   unocss: ^0.45.8
 
 devDependencies:
   '@unocss/preset-wind': 0.45.8
+  '@unocss/transformer-directives': 0.45.8
   astro: 1.0.6
   astro-uno: 0.1.6_astro@1.0.6+unocss@0.45.8
   unocss: 0.45.8
