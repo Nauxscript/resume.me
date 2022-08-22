@@ -8,9 +8,9 @@ Hello, it's me.
 - 🗒 Markdown is the best
 - 🎨 [UnoCSS]() - the instant on-demand atomic CSS engine
 - 🦾 TypeScript, of course
-- Responsive page - Support PC / Mobile
-- Employer-friendly - Dark Mode
-- Vercel - Packing & Deployment
+- 📱 Responsive page - Support PC / Mobile
+- 🔦 Employer-friendly - Dark Mode
+- 📦 Vercel - Packing & Deployment
 
 ## Project Structure
 
@@ -32,6 +32,6 @@ Hello, it's me.
 
 ## To be continued
 
-- I18n - chinese / english switch
-- use icon in easy way - @unocss/preset-icons
-- edit online - edit the resume and fill with yourself info, then print your resume
+- 🌏 I18n - chinese / english switch
+- 🎉 use icon in easy way - @unocss/preset-icons
+- ✍️  edit online - edit the resume and fill with yourself info, then print your resume
