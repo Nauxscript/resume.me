@@ -96,11 +96,17 @@ function printResume() {
     let doc = null;
     iframe.setAttribute('id', 'print-iframe');
     document.body.appendChild(iframe);
+		const styles = document.getElementsByTagName('style')
     doc = iframe.contentWindow.document;
     iframe.style.display = 'none';
     // 插入样式
     if (!doc) return
-    doc.write('<style media="print">body {zoom: .8;}</style>');
+		doc.write()
+		const styleArr = Array.from(styles)
+		styleArr.length && styleArr.forEach(style => {
+			doc.write(style.outerHTML)
+		});
+		doc.write('<style media="print">body {zoom: 0.8 !important;}</style>');
     doc.write('<body>' + el.innerHTML + '</body>');
     doc.close();
     iframe.contentWindow.focus();

@@ -81,15 +81,15 @@ p> strong:first-child {
 @media print {
   @page {
     background-color: #000;
-    /* margin: 0;
-    padding: 0; */
     size: A4 portrait;
     -webkit-print-color-adjust:exact;
     color-adjust: exact;
   }
+
   body {
-    /* zoom: .7; */
+    zoom: .8 !important;
   }
+
   .page-break {
     page-break-before: always;
     orphans: 5;
