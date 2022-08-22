@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import WorkingExp from "../components/WorkingExp.astro";
@@ -48,101 +48,125 @@ const headerInfo = {
 		value: "15384451980 (8am - 8pm)",
 	},
 };
-
 ---
 
 <script is:inline>
-console.log('init');
-// darkmode
-window.onload = () => {
-  console.log('ready');
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.querySelector('html').classList.add('dark');
-  } else {
-    document.querySelector('html').classList.remove('dark');
-  }
+	console.log("init");
+	// darkmode
+	window.onload = () => {
+		console.log("ready");
+		if (
+			localStorage.theme === "dark" ||
+			(!("theme" in localStorage) &&
+				window.matchMedia("(prefers-color-scheme: dark)").matches)
+		) {
+			document.querySelector("html").classList.add("dark");
+		} else {
+			document.querySelector("html").classList.remove("dark");
+		}
 
-	const darkModeBtn = document.getElementById('toggleDarkMode');
-	darkModeBtn && darkModeBtn.addEventListener('click', darkAndLight);
+		const darkModeBtn = document.getElementById("toggleDarkMode");
+		darkModeBtn && darkModeBtn.addEventListener("click", darkAndLight);
 
-	const switchBtn = document.getElementById('switch');
-	switchBtn && switchBtn.addEventListener('click', darkAndLight);
+		const switchBtn = document.getElementById("switch");
+		switchBtn && switchBtn.addEventListener("click", darkAndLight);
 
-	// print
-	const printBtn = document.getElementById('print');
-	printBtn && printBtn.addEventListener('click', printResume);
+		// print
+		const printBtn = document.getElementById("print");
+		printBtn && printBtn.addEventListener("click", printResume);
 
-	const pdfBtn = document.getElementById('pdfFile');
-	pdfBtn && pdfBtn.addEventListener('click', printResume);
-};
+		const pdfBtn = document.getElementById("pdfFile");
+		pdfBtn && pdfBtn.addEventListener("click", printResume);
+	};
 
-function darkAndLight(e) {
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.querySelector('html').classList.remove('dark');
-    localStorage.theme = 'light';
-  } else {
-    document.documentElement.classList.add('dark');
-    localStorage.theme = 'dark';
-  }
-}
+	function darkAndLight(e) {
+		if (
+			localStorage.theme === "dark" ||
+			(!("theme" in localStorage) &&
+				window.matchMedia("(prefers-color-scheme: dark)").matches)
+		) {
+			document.querySelector("html").classList.remove("dark");
+			localStorage.theme = "light";
+		} else {
+			document.documentElement.classList.add("dark");
+			localStorage.theme = "dark";
+		}
+	}
 
+	function printResume() {
+		//判断iframe是否存在，不存在则创建iframe
+		let iframe = document.getElementById("print-iframe");
+		if (!iframe) {
+			let el = document.getElementById("print-content");
+			iframe = document.createElement("IFRAME");
+			let doc = null;
+			iframe.setAttribute("id", "print-iframe");
+			document.body.appendChild(iframe);
+			doc = iframe.contentWindow.document;
+			iframe.style.display = "none";
+			// 插入样式
+			if (!doc) return;
+			doc.write();
+			const styles = document.getElementsByTagName("style");
+			const stylesheets = document.styleSheets;
+			const sheetsArr = Array.from(stylesheets);
+			const styleArr = Array.from(styles);
 
-function printResume() {
-  //判断iframe是否存在，不存在则创建iframe
-  let iframe = document.getElementById('print-iframe');
-  if (!iframe) {
-    let el = document.getElementById('print-content');
-    iframe = document.createElement('IFRAME');
-    let doc = null;
-    iframe.setAttribute('id', 'print-iframe');
-    document.body.appendChild(iframe);
-		const styles = document.getElementsByTagName('style')
-    doc = iframe.contentWindow.document;
-    iframe.style.display = 'none';
-    // 插入样式
-    if (!doc) return
-		doc.write()
-		const styleArr = Array.from(styles)
-		styleArr.length && styleArr.forEach(style => {
-			doc.write(style.outerHTML)
-		});
-		doc.write('<style media="print">body {zoom: 0.8 !important;}</style>');
-    doc.write('<body>' + el.innerHTML + '</body>');
-    doc.close();
-    iframe.contentWindow.focus();
-  }
-  //解决第一次样式不生效的问题
-  setTimeout(function () {
-    iframe.contentWindow.print();
-  }, 50);
-  // 兼容IE浏览器，我就不兼容，IE 人人喊打
-  // if (navigator.userAgent.indexOf("MSIE") > 0){
-  //   document.body.removeChild(iframe);
-  // }
-}
+			// dev environment
+			styleArr.length &&
+				styleArr.forEach((style) => {
+					doc.write(style.outerHTML);
+				});
+			
+			// prod environment
+			sheetsArr.length &&
+				sheetsArr.forEach((sheet) => {
+					doc.write(`<link rel="stylesheet" href="${sheet.href}">`)	
+				});
+
+			doc.write('<style media="print">body {zoom: 0.8 !important;}</style>');
+			doc.write("<body>" + el.innerHTML + "</body>");
+			doc.close();
+			iframe.contentWindow.focus();
+		}
+		//解决第一次样式不生效的问题
+		setTimeout(function () {
+			iframe.contentWindow.print();
+		}, 50);
+		// 兼容IE浏览器，我就不兼容，IE 人人喊打
+		// if (navigator.userAgent.indexOf("MSIE") > 0){
+		//   document.body.removeChild(iframe);
+		// }
+	}
 </script>
 
 <Layout title="Rusume">
 	<main
 		class="resume-main h-full w-full flex justify-center items-start sm:py-12 bg-gray-100 bg-backgrondimg dark:bg-gray-600 dark:bg-dark-backgrondimg relative"
 	>
-		<MobileControl></MobileControl>
+		<MobileControl />
 		<div
 			id="print-content"
 			class="resume-content flex flex-col justify-start items-center rounded-md overflow-hidden shadow-md"
 		>
-			<Header baseInfo={headerInfo}></Header>
-			<div class="resume-body dark:bg-gray-700 bg-white flex flex-col sm:flex-row print:flex-row flex-1 w-full px-8">
-				<div class="section-col flex flex-col items-start w-full print:block sm:w-1/2 print:w-1/2">
-					<WorkingExp></WorkingExp>
-					<InternshipExp></InternshipExp>
+			<Header baseInfo={headerInfo} />
+			<div
+				class="resume-body dark:bg-gray-700 bg-white flex flex-col sm:flex-row print:flex-row flex-1 w-full px-8"
+			>
+				<div
+					class="section-col flex flex-col items-start w-full print:block sm:w-1/2 print:w-1/2"
+				>
+					<WorkingExp />
+					<InternshipExp />
 				</div>
-				<div class="section-col flex flex-col items-start w-full sm:w-1/2 print:w-1/2">
-					<Skills></Skills>
-					<SelfProjects></SelfProjects>
+				<div
+					class="section-col flex flex-col items-start w-full sm:w-1/2 print:w-1/2"
+				>
+					<Skills />
+					<SelfProjects />
 				</div>
 			</div>
 		</div>
-		<PcControl></PcControl>
+		<PcControl />
 	</main>
 </Layout>
