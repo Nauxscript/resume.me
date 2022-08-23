@@ -51,10 +51,8 @@ const headerInfo = {
 ---
 
 <script is:inline>
-	console.log("init");
 	// darkmode
 	window.onload = () => {
-		console.log("ready");
 		if (
 			localStorage.theme === "dark" ||
 			(!("theme" in localStorage) &&
@@ -94,7 +92,7 @@ const headerInfo = {
 	}
 
 	function printResume() {
-		//判断iframe是否存在，不存在则创建iframe
+		// determine whether the iframe exists, create new one if not
 		let iframe = document.getElementById("print-iframe");
 		if (!iframe) {
 			let el = document.getElementById("print-content");
@@ -104,13 +102,17 @@ const headerInfo = {
 			document.body.appendChild(iframe);
 			doc = iframe.contentWindow.document;
 			iframe.style.display = "none";
-			// 插入样式
+			
+			// insert style stuff
 			if (!doc) return;
 			doc.write();
 			const styles = document.getElementsByTagName("style");
 			const stylesheets = document.styleSheets;
 			const sheetsArr = Array.from(stylesheets);
 			const styleArr = Array.from(styles);
+
+			// in dev environment, css code will insert into html by <style> tag,
+			// but in prod environment, its will be generated to css file and insert by <link> tag. 
 
 			// dev environment
 			styleArr.length &&
@@ -129,11 +131,13 @@ const headerInfo = {
 			doc.close();
 			iframe.contentWindow.focus();
 		}
-		//解决第一次样式不生效的问题
+
+		// fixed the problem of losing style in first time rendering
 		setTimeout(function () {
 			iframe.contentWindow.print();
 		}, 50);
-		// 兼容IE浏览器，我就不兼容，IE 人人喊打
+
+		// compatible with IE，I won't, fuck IE.
 		// if (navigator.userAgent.indexOf("MSIE") > 0){
 		//   document.body.removeChild(iframe);
 		// }
