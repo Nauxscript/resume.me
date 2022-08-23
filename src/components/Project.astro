@@ -20,9 +20,7 @@ const showLink = !!projectInfo.imgLink || !!projectInfo.link
         {
           !!projectInfo.imgLink && (<img class="absolute hidden group-hover:block w-32 h-32 top-0 left-[calc(100%+.5rem)] border-2 rounded-md z-[5] border-blue-200" src={ projectInfo.imgLink }  alt="" />)
         }
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 print:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-        </svg>
+        <i class="i-mdi-link-variant text-base"></i> 
       </a>)
     }
     <span class="company-project-time text-sm text-gray-400 dark:text-gray-100 text-right mt-2 sm:text-left sm:mt-0 print:text-left print:mt-0">{ projectInfo.time }</span>

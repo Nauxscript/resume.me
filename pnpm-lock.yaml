@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@iconify-json/mdi': ^1.1.30
+  '@unocss/preset-icons': ^0.45.12
   '@unocss/preset-wind': ^0.45.8
   '@unocss/transformer-directives': ^0.45.8
   astro: ^1.0.6
@@ -8,6 +10,8 @@ specifiers:
   unocss: ^0.45.8
 
 devDependencies:
+  '@iconify-json/mdi': 1.1.30
+  '@unocss/preset-icons': 0.45.12
   '@unocss/preset-wind': 0.45.8
   '@unocss/transformer-directives': 0.45.8
   astro: 1.0.6
@@ -380,6 +384,12 @@ packages:
     dev: true
     optional: true
 
+  /@iconify-json/mdi/1.1.30:
+    resolution: {integrity: sha512-mNhZT/14mReJRNDd//cs3oJ2RQq3nBkYj1fcDFr8sgYce4k8Br3CsOC61SIPsdw5rfNBMsXEpfJ4AOry36i0XQ==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
   /@iconify/types/1.1.0:
     resolution: {integrity: sha512-Jh0llaK2LRXQoYsorIH8maClebsnzTcve+7U3rQUSnC11X4jtPnFuyatqFLvMxZ8MLG8dB4zfHsbPfuvxluONw==}
     dev: true
@@ -583,6 +593,10 @@ packages:
       unconfig: 0.3.5
     dev: true
 
+  /@unocss/core/0.45.12:
+    resolution: {integrity: sha512-21ri/IF/r82lYJTSZ8kBwesSPysaMopMbPy6AtHgCQIHQPsdx6lOzg9Wq5rh+5IjXywXSmuRMuHiYSPjI0yxdw==}
+    dev: true
+
   /@unocss/core/0.45.8:
     resolution: {integrity: sha512-Iskmc1FaxIUAw4HK1U3htvXxJ4YAtffn3+ygNKY8+bzuOqhIk84vbp7SnHV3b8X6IHl4/OYzNRlVFhJQYnWV7g==}
     dev: true
@@ -598,6 +612,16 @@ packages:
     resolution: {integrity: sha512-5j8TfoYWKkpV0f2fwDTtAyRl+2zoquqg5JfuQDr1ELUpSodmHq9hMvt53EmG/S1wotijthsdh8jcjCRLQ36Xuw==}
     dependencies:
       '@unocss/core': 0.45.8
+    dev: true
+
+  /@unocss/preset-icons/0.45.12:
+    resolution: {integrity: sha512-ttoQHT76hLXF++oLgORCwi4+SpSGURkrcPm9PjavnQtLaItBHgFNEp2dPw4aJl+8njsY/YAHg6QrqZ7ItE7h1Q==}
+    dependencies:
+      '@iconify/utils': 1.0.33
+      '@unocss/core': 0.45.12
+      ohmyfetch: 0.4.18
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@unocss/preset-icons/0.45.8:

@@ -4,10 +4,6 @@
   transition-duration: 150ms;
 }
 
-.dark {
-  --svgBgColor: #F3F4F6;
-}
-
 p strong {
   /* @apply mx-1 z-[2] bg-gradient-to-l from-blue-200 to-blue-200 relative overflow-hidden bg-pos-strong; */
   margin: 0 4px;
