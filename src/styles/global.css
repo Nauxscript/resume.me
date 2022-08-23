@@ -82,20 +82,17 @@ p> strong:first-child {
   @page {
     background-color: #000;
     size: A4 portrait;
-    -webkit-print-color-adjust:exact;
-    color-adjust: exact;
   }
 
-  body {
-    zoom: .8 !important;
+  * {
+    -webkit-print-color-adjust: exact !important;
+    -moz-print-color-adjust: exact !important;
+    -ms-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   .page-break {
     page-break-before: always;
     orphans: 5;
-  }
-  .resume-header, .resume-body, .module-header span {
-    -webkit-print-color-adjust:exact;
-    color-adjust: exact;
   }
 }
