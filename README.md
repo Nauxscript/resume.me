@@ -6,7 +6,7 @@ Hello, it's me.
 
 - 💪 Power by [Astro](https://astro.build/blog/astro-1/) - a web framework for building fast, content-focused websites
 - 🗒 Markdown is the best
-- 🎨 [UnoCSS]() - the instant on-demand atomic CSS engine
+- 🎨 [UnoCSS](https://github.com/unocss/unocss) - the instant on-demand atomic CSS engine, use [@unocss/preset-icons](https://github.com/unocss/unocss/tree/main/packages/preset-icons/) 
 - 🦾 TypeScript, of course
 - 📱 Responsive page - Support PC / Mobile
 - 🔦 Employer-friendly - Dark Mode
@@ -33,5 +33,5 @@ Hello, it's me.
 ## To be continued
 
 - 🌏 I18n - chinese / english switch
-- 🎉 use icon in easy way - @unocss/preset-icons
+- 🎉 use icon in easy way - 
 - ✍️  edit online - edit the resume and fill with yourself info, then print your resume
