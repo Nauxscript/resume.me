@@ -33,5 +33,4 @@ Hello, it's me.
 ## To be continued
 
 - 🌏 I18n - chinese / english switch
-- 🎉 use icon in easy way - 
 - ✍️  edit online - edit the resume and fill with yourself info, then print your resume
