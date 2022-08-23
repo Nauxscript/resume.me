@@ -1,10 +1,5 @@
 ---
-import type { MarkdownInstance } from "astro";
-
-export interface SkillInfo {
-  name: string;
-  desc: MarkdownInstance<Record<string, any>>[];
-}
+import type { SkillInfo } from "../types";
 
 export interface Props {
   skillInfo: SkillInfo

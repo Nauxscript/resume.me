@@ -1,29 +1,6 @@
 ---
-import type { MarkdownInstance } from "astro";
-import type { PartialSome } from "../types";
+import type { WorkingExpData } from "../types";
 import Project from './Project.astro';
-export interface ProjectInfo {
-  name: string;
-  time: string;
-  link?: string;
-  imgLink?: string; 
-  type?: string;
-  desc: MarkdownInstance<Record<string, any>>[];
-}
-
-export type InternshipInfo = PartialSome<ProjectInfo, 'desc'>
-
-export interface CompanyInfo<T> {
-  name: string;
-  time: string;
-  type: string;
-  link: string; 
-  projects: Array<T>;
-}
-
-export type WorkingExpData = CompanyInfo<ProjectInfo>
-
-export type InternshipExpData = CompanyInfo<InternshipInfo>
 
 export interface Props {
   companyInfo: WorkingExpData
