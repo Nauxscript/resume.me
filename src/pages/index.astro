@@ -58,9 +58,9 @@ const headerInfo = {
 			(!("theme" in localStorage) &&
 				window.matchMedia("(prefers-color-scheme: dark)").matches)
 		) {
-			document.querySelector("html").classList.add("dark");
+			document.querySelector("html")?.classList.add("dark");
 		} else {
-			document.querySelector("html").classList.remove("dark");
+			document.querySelector("html")?.classList.remove("dark");
 		}
 
 		const darkModeBtn = document.getElementById("toggleDarkMode");
@@ -77,13 +77,13 @@ const headerInfo = {
 		pdfBtn && pdfBtn.addEventListener("click", printResume);
 	};
 
-	function darkAndLight(e) {
+	function darkAndLight(e: MouseEvent) {
 		if (
 			localStorage.theme === "dark" ||
 			(!("theme" in localStorage) &&
 				window.matchMedia("(prefers-color-scheme: dark)").matches)
 		) {
-			document.querySelector("html").classList.remove("dark");
+			document.querySelector("html")?.classList.remove("dark");
 			localStorage.theme = "light";
 		} else {
 			document.documentElement.classList.add("dark");
@@ -93,18 +93,28 @@ const headerInfo = {
 
 	function printResume() {
 		// determine whether the iframe exists, create new one if not
-		let iframe = document.getElementById("print-iframe");
+		let iframe:HTMLIFrameElement = document.getElementById("print-iframe") as HTMLIFrameElement;
 		if (!iframe) {
-			let el = document.getElementById("print-content");
-			iframe = document.createElement("IFRAME");
-			let doc = null;
+			const el = document.getElementById("print-content");
+			if (!el) {
+				console.error('Element with id [print-content] is not exist!');
+				return
+			}
+
+			iframe = document.createElement("IFRAME") as HTMLIFrameElement;
 			iframe.setAttribute("id", "print-iframe");
 			document.body.appendChild(iframe);
-			doc = iframe.contentWindow.document;
+			if (!iframe.contentWindow) {
+				console.error('Iframe content window object is undefined!');
+				return
+			}
+			const doc = iframe.contentWindow.document;
 			iframe.style.display = "none";
-			
 			// insert style stuff
-			if (!doc) return;
+			if (!doc) {
+				console.error('Doc element is not exist!');
+				return
+			};
 			doc.write();
 			const styles = document.getElementsByTagName("style");
 			const stylesheets = document.styleSheets;
@@ -134,7 +144,7 @@ const headerInfo = {
 
 		// fixed the problem of losing style in first time rendering
 		setTimeout(function () {
-			iframe.contentWindow.print();
+			iframe.contentWindow!.print();
 		}, 50);
 
 		// compatible with IE，I won't, fuck IE.
